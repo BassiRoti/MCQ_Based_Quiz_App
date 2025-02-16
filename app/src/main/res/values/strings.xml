@@ -4,4 +4,13 @@
     <string name="john">John</string>
     <string name="submit">Submit</string>
     <string name="start">Start</string>
+    <string name="previous">Previous</string>
+    <string name="_0">0</string>
+    <string name="seprator">/</string>
+    <string name="_10">10</string>
+    <string name="next">Next</string>
+    <string name="option_4">option 4</string>
+    <string name="option_3">option 3</string>
+    <string name="option_2">option 2</string>
+    <string name="option_1">option 1</string>
 </resources>
