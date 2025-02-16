@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         new Handler()
                 .postDelayed(()->{
-                    startActivity(new Intent(MainActivity.this, Home.class));
+                    startActivity(new Intent(MainActivity.this, NameActivity.class));
                     finish();
                 }, 3000);
 
