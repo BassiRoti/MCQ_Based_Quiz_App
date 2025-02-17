@@ -1,5 +1,6 @@
 package com.example.mcqbasedquizapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -20,5 +21,8 @@ public class ScoreActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Intent i=getIntent();
+//        String score=i.getExtras("user_score");
     }
 }

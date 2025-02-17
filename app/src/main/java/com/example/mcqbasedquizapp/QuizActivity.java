@@ -23,11 +23,13 @@ class Quizes{
     String[] answers;
     String [][]options;
 
-    int score;
+    int[] score;
     int totalq;
 
     Quizes(){
-        score=0;
+        score=new int[]{
+                0,0,0,0,0,0,0,0,0,0
+        };
         questions = new String[] {
                 "When was Osama Bin Laden born?",
                 "What is the capital of France?",
@@ -70,17 +72,20 @@ class Quizes{
                 "Pacific Ocean",
                 " "
         };
-        totalq=9;
+        totalq=10;
 
     }
 
-    void setscore(int x){
-        score=score+x;
+    int getsum() {
+        int s=0;
+        for (int i = 0; i < questions.length-1; i++) {
+            s=s+score[i];
+        }
+        return s;
     }
 
-    int getscore(){
-        return score;
-    }
+
+
 
 
 }
@@ -135,7 +140,7 @@ public class QuizActivity extends AppCompatActivity {
         String selected_option_data=selected_option_2.getText().toString().trim();
 
         if(quizes.answers[qno].trim().equals(selected_option_data)){
-            ++quizes.score;
+            quizes.score[qno]=1;
 //            Toast.makeText(this, "Correct !", Toast.LENGTH_SHORT).show();
         }
 //        else{
@@ -165,7 +170,8 @@ public class QuizActivity extends AppCompatActivity {
 
 
         question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4, radio_grp_identifier);
-        question_checker(quizes, radio_grp_identifier,0);
+//        question_checker(quizes, radio_grp_identifier,0);
+        question_number2[0]=1;
         changer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +180,7 @@ public class QuizActivity extends AppCompatActivity {
                 }
                 if(question_number2[0]==quizes.totalq){
                     Intent i=new Intent(QuizActivity.this,ScoreActivity.class);
-                    String sent_score=quizes.score+"";
+                    int sent_score=quizes.getsum();
                     Toast.makeText(QuizActivity.this, sent_score, Toast.LENGTH_SHORT).show();
                     i.putExtra("user_score",sent_score);
                     startActivity(i);
@@ -184,9 +190,8 @@ public class QuizActivity extends AppCompatActivity {
                 ++question_number2[0];
                 question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4, radio_grp_identifier);
                 String garbage=question_number2[0]+"";
+//                Toast.makeText(QuizActivity.this, garbage, Toast.LENGTH_SHORT).show();
                 current_quesion.setText(garbage);
-
-
 
             }
 
