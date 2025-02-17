@@ -43,14 +43,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_0"
-                android:id="@+id/userscore"
+                android:id="@+id/qindex"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/seprator"
                 android:id="@+id/score_seprator"
-                android:layout_toRightOf="@id/userscore"
+                android:layout_toRightOf="@id/qindex"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -80,6 +80,7 @@
             android:padding="10dp"
             android:text="@string/enter_your_name_here"
             android:background="@android:color/transparent"
+            android:id="@+id/tvquestion"
 
             />
 
@@ -91,29 +92,19 @@
         android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="25dp"
+        android:id="@+id/rgid"
         >
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="5dp"
-            android:backgroundTint="@color/green"
-            app:cardCornerRadius="20dp">
+
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/option_1"
             android:id="@+id/option1">
-
+<!--            android:background="@drawable/radio_button_background"-->
         </RadioButton>
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:backgroundTint="@color/green"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="5dp"
-            app:cardCornerRadius="20dp">
+
 
         <RadioButton
             android:layout_width="match_parent"
@@ -121,28 +112,15 @@
             android:text="@string/option_2"
             android:id="@+id/option2">
         </RadioButton>
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:backgroundTint="@color/green"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="5dp"
-            app:cardCornerRadius="20dp">
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/option_3"
                 android:id="@+id/option3">
             </RadioButton>
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:backgroundTint="@color/green"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="5dp"
-            app:cardCornerRadius="20dp">
+
 
         <RadioButton
             android:layout_width="match_parent"
@@ -150,7 +128,7 @@
             android:text="@string/option_4"
             android:id="@+id/option4">
         </RadioButton>
-        </androidx.cardview.widget.CardView>
+
 
     </RadioGroup>
 
@@ -166,6 +144,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/dgreen"
             android:text="@string/next"
+            android:id="@+id/changer"
+            />
 
     </LinearLayout>
 
