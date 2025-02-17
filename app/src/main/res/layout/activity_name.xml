@@ -64,9 +64,11 @@
                 android:layout_height="match_parent"
                 android:autofillHints="@string/john"
                 android:id="@+id/userdata"
+                android:gravity="center"
                 android:background="@android:color/transparent"
                 android:padding="10dp"
                 android:inputType="text"
+
 
                 />
 
