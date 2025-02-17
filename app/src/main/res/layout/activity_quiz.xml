@@ -102,6 +102,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/option_1"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/radio_button_background"
             android:id="@+id/option1">
 <!--            android:background="@drawable/radio_button_background"-->
         </RadioButton>
@@ -112,6 +114,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/option_2"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/radio_button_background"
             android:id="@+id/option2">
         </RadioButton>
 
@@ -119,6 +123,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/option_3"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/radio_button_background"
                 android:id="@+id/option3">
             </RadioButton>
 
@@ -128,6 +134,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/option_4"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/radio_button_background"
             android:id="@+id/option4">
         </RadioButton>
 

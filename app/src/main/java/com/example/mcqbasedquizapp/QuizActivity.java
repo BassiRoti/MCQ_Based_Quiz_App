@@ -163,8 +163,9 @@ public class QuizActivity extends AppCompatActivity {
             return insets;
         });
 
-//        Intent i=getIntent();
-//        String user_name=i.getStringExtra("userinput").toString();
+
+
+
 
         init();
         Quizes quizes=new Quizes();
@@ -196,9 +197,12 @@ public class QuizActivity extends AppCompatActivity {
                     // Logic for finishing the quiz
                     Toast.makeText(QuizActivity.this, "Quiz Finished!", Toast.LENGTH_SHORT).show();
                     int finalScore = quizes.getsum();
-                    Intent i=new Intent(QuizActivity.this, ScoreActivity.class);
-                    i.putExtra("score",finalScore);
-                    startActivity(i);
+                    Intent i=getIntent();
+                    String user_name=i.getStringExtra("user_input").toString();
+                    Intent j=new Intent(QuizActivity.this, ScoreActivity.class);
+                    j.putExtra("score",finalScore);
+                    j.putExtra("name",user_name);
+                    startActivity(j);
                     finish();
                 }
             }

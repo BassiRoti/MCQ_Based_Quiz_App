@@ -2,6 +2,7 @@ package com.example.mcqbasedquizapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +11,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class ScoreActivity extends AppCompatActivity {
+    TextView userscore;
 
+    private void init(){
+        userscore=findViewById(R.id.userscore);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +26,11 @@ public class ScoreActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        init();
 
         Intent i=getIntent();
-//        String score=i.getExtras("user_score");
+        int score=i.getIntExtra("score",0);
+        String name=i.getStringExtra("name");
+        userscore.setText(String.valueOf(score));
     }
 }
