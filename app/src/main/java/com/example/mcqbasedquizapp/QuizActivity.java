@@ -3,6 +3,7 @@ package com.example.mcqbasedquizapp;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -87,6 +88,8 @@ public class QuizActivity extends AppCompatActivity {
     RadioGroup radio_grp_identifier;
     Button changer;
     RadioButton option_1,option_2,option_3,option_4;
+    ImageView previd;
+    TextView previd2;
 
 
     void init(){
@@ -99,11 +102,14 @@ public class QuizActivity extends AppCompatActivity {
         option_2=findViewById(R.id.option2);
         option_3=findViewById(R.id.option3);
         option_4=findViewById(R.id.option4);
+        previd=findViewById(R.id.prev_pic);
+        previd2=findViewById(R.id.prev_id2);
 
 
 
     }
-    public void question_displayer(int q, TextView display_question, Quizes quizes, RadioButton option_1, RadioButton option_2, RadioButton option_3, RadioButton option_4  ){
+    public void question_displayer(int q, TextView display_question, Quizes quizes, RadioButton option_1, RadioButton option_2, RadioButton option_3, RadioButton option_4,RadioGroup r  ){
+        r.clearCheck();
         int number=q;
         display_question.setText(quizes.questions[number]);
         option_1.setText(quizes.options[number][0]);
@@ -116,11 +122,19 @@ public class QuizActivity extends AppCompatActivity {
 
     public void question_checker(Quizes quizes, RadioGroup raid, int qno){
         int selected_option=raid.getCheckedRadioButtonId();
+        if(selected_option==-1){
+            return;
+        }
         RadioButton selected_option_2=findViewById(selected_option);
         String selected_option_data=selected_option_2.getText().toString().trim();
-        if(quizes.answers[qno].equals(selected_option_data)){
+
+        if(quizes.answers[qno].trim().equals(selected_option_data)){
             ++quizes.score;
             Toast.makeText(this, "Correct !", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "not correct", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, quizes.answers[qno], Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -146,16 +160,27 @@ public class QuizActivity extends AppCompatActivity {
         int no=Integer.parseInt(question_number);
 
 
-        question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4);
+        question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4, radio_grp_identifier);
+        question_checker(quizes, radio_grp_identifier,no);
         changer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                question_checker(quizes, radio_grp_identifier,no);
+                question_checker(quizes, radio_grp_identifier,question_number2[0]);
                 ++question_number2[0];
-                question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4);
+                question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4, radio_grp_identifier);
 
             }
 
+        });
+
+        previd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(question_number2[0]>=1){
+                    --question_number2[0];
+                    question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4, radio_grp_identifier);
+                }
+            }
         });
 
 
