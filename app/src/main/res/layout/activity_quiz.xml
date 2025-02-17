@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/grey"
+    android:background="@color/_4a9cb1"
     tools:context=".QuizActivity">
 
     <RelativeLayout
@@ -79,6 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
+            android:gravity="center"
             android:text="@string/enter_your_name_here"
             android:background="@android:color/transparent"
             android:id="@+id/tvquestion"

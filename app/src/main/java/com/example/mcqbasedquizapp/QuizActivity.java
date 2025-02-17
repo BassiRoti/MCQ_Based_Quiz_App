@@ -1,5 +1,6 @@
 package com.example.mcqbasedquizapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,12 +24,12 @@ class Quizes{
     String [][]options;
 
     int score;
-    int question_no;
+    int totalq;
 
     Quizes(){
         score=0;
         questions = new String[] {
-                "When was Osama born?",
+                "When was Osama Bin Laden born?",
                 "What is the capital of France?",
                 "What is 2 + 2?",
                 "Who wrote 'Hamlet'?",
@@ -37,7 +38,8 @@ class Quizes{
                 "Who painted the Mona Lisa?",
                 "What is the chemical symbol for water?",
                 "Which animal is known as the King of the Jungle?",
-                "What is the largest ocean on Earth?"
+                "What is the largest ocean on Earth?",
+                " "
         };
 
         options = new String[][] {
@@ -50,7 +52,8 @@ class Quizes{
                 {"Van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Claude Monet"},
                 {"H2", "H2O", "O2", "CO2"},
                 {"Tiger", "Elephant", "Lion", "Cheetah"},
-                {"Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"}
+                {"Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"},
+                {" "," "," "," "}
         };
 
 
@@ -64,8 +67,10 @@ class Quizes{
                 "Leonardo da Vinci",
                 "H2O",
                 "Lion",
-                "Pacific Ocean"
+                "Pacific Ocean",
+                " "
         };
+        totalq=9;
 
     }
 
@@ -94,6 +99,7 @@ public class QuizActivity extends AppCompatActivity {
 
     void init(){
         current_quesion=findViewById(R.id.qindex);
+        current_quesion.setText("1");
         total_questions=findViewById(R.id.total_score);
         display_question=findViewById(R.id.tvquestion);
         radio_grp_identifier =findViewById(R.id.rgid);
@@ -130,12 +136,12 @@ public class QuizActivity extends AppCompatActivity {
 
         if(quizes.answers[qno].trim().equals(selected_option_data)){
             ++quizes.score;
-            Toast.makeText(this, "Correct !", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Correct !", Toast.LENGTH_SHORT).show();
         }
-        else{
-            Toast.makeText(this, "not correct", Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, quizes.answers[qno], Toast.LENGTH_SHORT).show();
-        }
+//        else{
+//            Toast.makeText(this, "not correct", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, quizes.answers[qno], Toast.LENGTH_SHORT).show();
+//        }
     }
 
     @Override
@@ -152,22 +158,35 @@ public class QuizActivity extends AppCompatActivity {
         init();
         Quizes quizes=new Quizes();
 
-        String question_number=current_quesion.getText().toString().trim();
         int []question_number2 = new int[1];
-        question_number2[0]=Integer.parseInt(question_number);
+        question_number2[0]=0;
 
 
-        int no=Integer.parseInt(question_number);
 
 
         question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4, radio_grp_identifier);
-        question_checker(quizes, radio_grp_identifier,no);
+        question_checker(quizes, radio_grp_identifier,0);
         changer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(question_number2[0]==quizes.totalq-1) {
+                    changer.setText(R.string.finish);
+                }
+                if(question_number2[0]==quizes.totalq){
+                    Intent i=new Intent(QuizActivity.this,ScoreActivity.class);
+                    String sent_score=quizes.score+"";
+                    Toast.makeText(QuizActivity.this, sent_score, Toast.LENGTH_SHORT).show();
+                    i.putExtra("user_score",sent_score);
+                    startActivity(i);
+                    finish();
+                }
                 question_checker(quizes, radio_grp_identifier,question_number2[0]);
                 ++question_number2[0];
                 question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4, radio_grp_identifier);
+                String garbage=question_number2[0]+"";
+                current_quesion.setText(garbage);
+
+
 
             }
 
@@ -178,6 +197,20 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(question_number2[0]>=1){
                     --question_number2[0];
+                    String garbage2=question_number2[0]+"";
+                    current_quesion.setText(garbage2);
+                    question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4, radio_grp_identifier);
+                }
+            }
+        });
+
+        previd2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(question_number2[0]>=1){
+                    --question_number2[0];
+                    String garbage2=question_number2[0]+"";
+                    current_quesion.setText(garbage2);
                     question_displayer(question_number2[0],display_question,quizes,option_1,option_2,option_3,option_4, radio_grp_identifier);
                 }
             }
