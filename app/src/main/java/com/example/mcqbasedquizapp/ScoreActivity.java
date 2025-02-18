@@ -52,7 +52,11 @@ public class ScoreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(Intent.ACTION_SEND);
-                i.setType("image/*");
+                i.setType("text/plain");
+                StringBuilder s=new StringBuilder();
+                s.append("Hey! i just played the MCQ Based Quiz App made by Abbas. Here's my score: ");
+                s.append(userscore.getText());
+                i.putExtra(Intent.EXTRA_TEXT,s.toString().trim());
                 sharer.launch(i);
             }
         });
