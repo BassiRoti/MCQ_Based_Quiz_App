@@ -15,4 +15,11 @@
     <string name="option_1">option 1</string>
     <string name="finish">Finish</string>
     <string name="nextt">Next</string>
+    <string name="kindly_enter_your_name">Kindly Enter Your Name</string>
+    <string name="user_input">user_input</string>
+    <string name="hey_i_just_played_the_mcq_based_quiz_app_made_by_abbas_here_s_my_score">"Hey! i just played the MCQ Based Quiz App made by Abbas. Here's my score: "</string>
+    <string name="score">score</string>
+    <string name="name">name</string>
+    <string name="john_doe">John Doe</string>
+    <string name="share_your_score">Share Your Score</string>
 </resources>

@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/scoreboard"
-            android:text="John Doe"
+            android:text="@string/john_doe"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             android:id="@+id/usernamescore">
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginVertical="150dp"
-            android:text="Share Your Score"
+            android:text="@string/share_your_score"
             android:id="@+id/share">
 
         </Button>

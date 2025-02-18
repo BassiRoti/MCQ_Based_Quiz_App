@@ -54,7 +54,7 @@ public class ScoreActivity extends AppCompatActivity {
                 Intent i=new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");
                 StringBuilder s=new StringBuilder();
-                s.append("Hey! i just played the MCQ Based Quiz App made by Abbas. Here's my score: ");
+                s.append(getString(R.string.hey_i_just_played_the_mcq_based_quiz_app_made_by_abbas_here_s_my_score));
                 s.append(userscore.getText());
                 i.putExtra(Intent.EXTRA_TEXT,s.toString().trim());
                 sharer.launch(i);
@@ -62,8 +62,8 @@ public class ScoreActivity extends AppCompatActivity {
         });
 
         Intent i=getIntent();
-        int score=i.getIntExtra("score",0);
-        String name=i.getStringExtra("name");
+        int score=i.getIntExtra(getString(R.string.score),0);
+        String name=i.getStringExtra(getString(R.string.name));
         userscore.setText(String.valueOf(score));
         n.setText(name);
 

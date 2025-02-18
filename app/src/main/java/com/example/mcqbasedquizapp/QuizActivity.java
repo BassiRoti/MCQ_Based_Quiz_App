@@ -191,10 +191,9 @@ public class QuizActivity extends AppCompatActivity {
                     current_quesion.setText(String.valueOf(question_number2[0]));
 
                     if (question_number2[0] == quizes.totalq) {
-                        changer.setText(R.string.finish); // Update button text on the last question
+                        changer.setText(R.string.finish);
                     }
                 } else {
-                    // Logic for finishing the quiz
                     Toast.makeText(QuizActivity.this, "Quiz Finished!", Toast.LENGTH_SHORT).show();
                     int finalScore = quizes.getsum();
                     Intent i=getIntent();

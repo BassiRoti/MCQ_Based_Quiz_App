@@ -46,14 +46,14 @@ public class NameActivity extends AppCompatActivity {
 
                 extracteddata=UserData.getText().toString().trim();
                 if(extracteddata.isEmpty()){
-                    Toast.makeText(NameActivity.this, "Kindly Enter Your Name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NameActivity.this, R.string.kindly_enter_your_name, Toast.LENGTH_SHORT).show();
                 }
                 else if(extracteddata.length()<=4){
                     Toast.makeText(NameActivity.this, "", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Intent i = new Intent(NameActivity.this, QuizActivity.class);
-                    i.putExtra("user_input", extracteddata);
+                    i.putExtra(getString(R.string.user_input), extracteddata);
                     startActivity(i);
                     finish();
                 }
